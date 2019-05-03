@@ -1,4 +1,4 @@
-package processing.order.orderProcessingService;
+package orderProcessing.orderProcessingService;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
