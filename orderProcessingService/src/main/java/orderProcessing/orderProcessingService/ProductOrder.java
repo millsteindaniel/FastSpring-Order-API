@@ -10,16 +10,16 @@ import javax.persistence.Id;
 
 @Data
 @Entity
-public class Order {
+public class ProductOrder {
     private @Id @GeneratedValue Long id;
     private String status;
     private String product;
     private int quantity;
     private double price;
 
-    Order() {}
+    ProductOrder() {}
 
-    Order(String status, String product, int quantity, double price) {
+    ProductOrder(double price, String product, int quantity, String status) {
         this.status = status;
         this.product = product;
         this.quantity = quantity;
