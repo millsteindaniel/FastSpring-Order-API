@@ -14,8 +14,8 @@ Retrieve status of a given Order: curl -v localhost:8080/orders/status/order id
 Retrieve successful Orders: curl -v localhost:8080/orders/successful
 Retrieve unsuccessful Orders: curl -v localhost:8080/orders/unsuccessful
 
-I chose to have all commands for the api be based on a products id rather than name, because I assumed the id is something always accessable to the user also it by my design it is unique. I also worked under the assumption an order's status is either successful or not successful, and that there was o other intermediary value for this attribute.
-Note: I initoialize my data base with some orders and products in the inventory. This is done for general convenience when testing.
+I chose to have all commands for the api be based on a products id rather than name, because I assumed the id is something always accessable to the user also it by my design it is unique. I also worked under the assumption an order's status is either successful or not successful, and that there was no other intermediary value for this attribute.
+Note: I initialized my data base at runtime with some orders and products in the inventory. This is done for general convenience when testing.
 
 Data models:
 I created two main data structures for this project being a product and a productOrder. I also created interfaces that represented reppositories of these objects.
