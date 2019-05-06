@@ -9,13 +9,21 @@ java -jar target/orderProcessingService-0.0.1-SNAPSHOT.jar
 
 API commands:
 Place an order: curl -v localhost:8080/orders/place/product id/quantity
+
 Retrieve an Order given an Order ID: curl -v localhost:8080/orders/order id
+
 Retrieve status of a given Order: curl -v localhost:8080/orders/status/order id
+
 Retrieve successful Orders: curl -v localhost:8080/orders/successful
+
 Retrieve unsuccessful Orders: curl -v localhost:8080/orders/unsuccessful
+
 List all placed orders: curl -v localhost:8080/orders
+
 Add new product to inventory: curl -v localhost:8080/products -H 'Content-type:application/json' -d '{"name":name, "availableQuantity":quantity, "price":price}'
+
 Check inventory: curl -v localhost:8080/products
+
 Retrieve a product from inventory given product id: curl -v localhost:8080/products/product id
 
 
