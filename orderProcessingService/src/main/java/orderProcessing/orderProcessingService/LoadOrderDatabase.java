@@ -18,10 +18,10 @@ class LoadOrderDatabase {
             log.info("Preloading " + pRepository.save(new Product("Kiwi", 100, 10.0)));
             log.info("Preloading " + pRepository.save(new Product("Bananas", 0, 10.0)));
             */
-            log.info("Preloading " + oRepository.save(new ProductOrder(2.0,"Apple", 10, "Placed")));
-            log.info("Preloading " + oRepository.save(new ProductOrder(10.0,"Processed",10,"Orange")));
-            log.info("Preloading " + oRepository.save(new ProductOrder(10.0,"Kiwi",10,"Delivered")));
-            log.info("Preloading " + oRepository.save(new ProductOrder(10.0,"Bananas",2,"In Transit")));
+            log.info("Preloading " + oRepository.save(new ProductOrder(2.0,"Apple", 10, "Successful")));
+            log.info("Preloading " + oRepository.save(new ProductOrder(10.0,"Orange",10,"Successful")));
+            log.info("Preloading " + oRepository.save(new ProductOrder(10.0,"Kiwi",10,"Unsuccessful")));
+            log.info("Preloading " + oRepository.save(new ProductOrder(10.0,"Bananas",2,"Successful")));
 
         };
     }

@@ -2,6 +2,7 @@ package orderProcessing.orderProcessingService;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -22,6 +23,37 @@ public class OrderController {
     @GetMapping("/orders")
     List<ProductOrder> allOrders() {
         return oRepository.findAll();
+    }
+
+    @GetMapping("/orders/successful")
+    List<ProductOrder> allSuccessfulOrders() {
+        List<ProductOrder> all = oRepository.findAll();
+        List<ProductOrder> res = new ArrayList<ProductOrder>();
+        for(int i = 0; i < all.size(); i++){
+            if(all.get(i).getStatus() == "Successful"){
+                res.add(all.get(i));
+            }
+        }
+        return res;
+    }
+
+    @GetMapping("/orders/unsuccessful")
+    List<ProductOrder> allUnsuccessfulOrders() {
+
+        List<ProductOrder> all = oRepository.findAll();
+        List<ProductOrder> res = new ArrayList<ProductOrder>();
+        for(int i = 0; i < all.size(); i++){
+            if(all.get(i).getStatus() == "Unsuccessful"){
+                res.add(all.get(i));
+            }
+        }
+        return res;
+    }
+
+    @GetMapping("/orders/status/{id}")
+    String allOrdersStatus(@PathVariable Long id) {
+        ProductOrder order = oRepository.findById(id).orElseThrow(() -> new OrderNotFoundException(id));
+        return order.getStatus()+"\n";
     }
 
     @PostMapping("/orders")
@@ -53,6 +85,20 @@ public class OrderController {
                     newOrder.setId(id);
                     return oRepository.save(newOrder);
                 });
+    }
+
+    @GetMapping("/orders/place/{id}/{quantity}")
+    ProductOrder placeOrder( @PathVariable Long id, @PathVariable int quantity) {
+        Product p = pRepository.findById(id).orElseThrow(() -> new ProductNotFoundException(id));;
+        if(quantity <= p.getAvailableQuantity()){
+            p.setAvailableQuantity(p.getAvailableQuantity()-quantity);
+            pRepository.save(p);
+            ProductOrder newOrder =new ProductOrder(p.getPrice(),p.getName(),quantity,"Successful");
+            return oRepository.save(newOrder);
+        }else{
+            ProductOrder newOrder =new ProductOrder(p.getPrice(),p.getName(),quantity,"Unsuccessful");
+            return oRepository.save(newOrder);
+        }
     }
 
     @DeleteMapping("/orders/{id}")
