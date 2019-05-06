@@ -18,5 +18,5 @@ I chose to have all commands for the api be based on a products id rather than n
 Note: I initialized my data base at runtime with some orders and products in the inventory. This is done for general convenience when testing.
 
 Data models:
-I created two main data structures for this project being a product and a productOrder. I also created interfaces that represented reppositories of these objects.
+I created two main data structures for this project being a product and a productOrder. I also created interfaces that represented repositories of these objects.
 As suggested in the projects description I used H2 in memory database, Spring Boot, and Maven for project management.
